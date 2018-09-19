@@ -1,0 +1,14 @@
+export const SESSION_GET_ALL = '@chat/session/get/all';
+export const SESSION_GET_ALL_SUCCESS = '@chat/session/get/all/success';
+export const SESSION_GET_ALL_ERROR = '@chat/session/get/all/error';
+export const SESSION_CREATE = '@chat/session/create';
+export const SESSION_CREATE_SUCCESS = '@chat/session/create/success';
+export const SESSION_CREATE_ERROR = '@chat/session/create/error';
+export const CHAT_CREATE = '@chat/create';
+export const USER_CREATE = '@chat/user/create';
+export const USER_CREATE_SUCCESS = '@chat/user/create/success';
+export const USER_CREATE_ERROR = '@chat/user/create/error';
+export const USER_CREATE_RESET = '@chat/user/create/reset';
+export const MESSAGE_SEND = '@chat/message/send';
+export const MESSAGE_SEND_SUCCESS = '@chat/message/send/success';
+export const MESSAGE_SEND_ERROR = '@chat/message/send/error';

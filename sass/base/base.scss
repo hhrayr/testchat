@@ -1,0 +1,76 @@
+$mq-base-font-size: 15px !default;
+$mq-responsive: true !default;
+$mq-breakpoints: (
+  xs: 543px,
+  sm: 767px,
+  md: 991px,
+  lg: 1199px
+) !default;
+$mq-static-breakpoint: desktop !default;
+$mq-show-breakpoints: ();
+
+@import '../../node_modules/sass-mq/mq';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%; 
+}
+
+img[src*=refinedads] {
+  position: absolute;
+  visibility: hidden;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+}
+
+svg {
+  vertical-align: top;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+a,
+button {
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+a, a:visited {
+  color: #007fa3;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

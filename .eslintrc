@@ -1,0 +1,51 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+    }
+  },
+  "plugins": [
+    "react",
+    "flowtype"
+  ],
+  "settings": {
+    "react": {
+      "pragma": "React"
+    },
+    "flowType": {
+      "onlyFilesWithFlowAnnotation": true
+    },
+    "import/resolver": "node"
+  },
+  "rules": {
+    "arrow-body-style": [2, "always"],
+    "flowtype/define-flow-type": 2,
+    "no-plusplus": [0, {
+      "allowForLoopAfterthoughts": true
+    }],
+    "no-underscore-dangle": "off",
+    "no-use-before-define": "off",
+    "class-methods-use-this": "off",
+    "import/no-dynamic-require": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*-test.js", "**/*.story.js"] }],
+    "import/prefer-default-export": "off",
+    "jsx-a11y/label-has-for": "off",
+    "react/sort-comp": [0],
+    "react/jsx-filename-extension": "off",
+    "react/no-array-index-key": "off",
+    "react/forbid-prop-types": "off",
+    "react/jsx-boolean-value": [0],
+    "react/prefer-stateless-function": ["error", { "ignorePureComponents": true }],
+    "react/jsx-no-bind": [2, { "allowArrowFunctions": true }]
+  }
+}

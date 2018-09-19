@@ -1,0 +1,5 @@
+node_modules/**
+/dist/**
+/assets/
+/build/
+/components/icons/**

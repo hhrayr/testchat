@@ -1,0 +1,10 @@
+export const WS_SERVER_MESSAGE = '@ws/server/message';
+export const WS_SERVER_ERROR = '@ws/server/error';
+export const WS_SERVER_CHAT_SESSION_CREATE = '@ws/server/chat/session/create';
+export const WS_SERVER_CHAT_SESSION_CREATED = '@ws/server/chat/session/created';
+export const WS_SERVER_CHAT_USER_ADD = '@ws/server/chat/user/add';
+export const WS_SERVER_CHAT_USER_ADDED = '@ws/server/chat/user/added';
+export const WS_SERVER_CHAT_USER_REMOVE = '@ws/server/chat/user/remove';
+export const WS_SERVER_CHAT_USER_REMOVED = '@ws/server/chat/user/removed';
+export const WS_SERVER_CHAT_MESSAGE_SEND = '@ws/server/chat/message/send';
+export const WS_SERVER_CHAT_MESSAGE_RECEIVED = '@ws/server/chat/message/received';

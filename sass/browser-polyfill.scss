@@ -1,0 +1,28 @@
+body.msie {
+  #app {
+    display: flex;
+  }
+
+  .main-body {
+    width: 100%;
+    flex: 1 1 auto;
+    flex-flow: column nowrap;
+  }
+}
+
+body.safari {
+  button.btn {
+    &::before,
+    &::after {
+      content: '';
+      flex: 1 0 auto;
+    }
+  }
+}
+
+body.ios {
+  &.is-overlay-opened {
+    position: fixed;
+    width: 100%;
+  }
+}
