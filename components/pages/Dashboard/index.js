@@ -16,13 +16,17 @@ import './dashboard.scss';
 class Dashboard extends React.Component {
   static propTypes = {
     sessions: PropTypes.object.isRequired,
-    chat: PropTypes.object.isRequired,
+    chat: PropTypes.object,
     createChat: PropTypes.func.isRequired,
     getAllSessions: PropTypes.func.isRequired,
     createSession: PropTypes.func.isRequired,
     createUser: PropTypes.func.isRequired,
     createUserReset: PropTypes.func.isRequired,
     sendMessage: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    chat: null,
   }
 
   componentDidMount() {

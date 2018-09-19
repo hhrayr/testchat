@@ -35,19 +35,16 @@ export default function (io) {
       }
     });
 
-    chatSessions.addOnSessionCreatedEventListener((token) => {
-      const messageData = {
-        type: wsServerMessages.WS_SERVER_CHAT_SESSION_CREATED,
-        data: { token },
-      };
-      io.emit(wsServerMessages.WS_SERVER_MESSAGE, messageData);
-      console.log('emitted', wsServerMessages.WS_SERVER_MESSAGE, messageData);
-    });
-
     const consumeCreateChatSessionMessage = (message) => {
       try {
         const token = chatSessions.createSession();
         const session = chatSessions.getSession(token);
+        const messageData = {
+          type: wsServerMessages.WS_SERVER_CHAT_SESSION_CREATED,
+          data: { token },
+        };
+        io.emit(wsServerMessages.WS_SERVER_MESSAGE, messageData);
+        console.log('emitted', wsServerMessages.WS_SERVER_MESSAGE, messageData);
         session.addEventListner(ON_USER_ADD, onUserAddedHandler(token));
         session.addEventListner(ON_USER_REMOVE, onUserReovedHandler(token));
         session.addOnMessageSentEventListener(onMessageReceivedHandler(token));

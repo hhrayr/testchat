@@ -1,126 +1,80 @@
+import { cloneDeep } from 'lodash';
 import * as constants from './constants';
 import initialState from './initialState';
 
 export default function (state = initialState, action) {
+  const newState = cloneDeep(state);
   switch (action.type) {
-    case constants.SESSION_GET_ALL:
-      return {
-        ...state,
-        sessions: {
-          loading: true,
-        },
-      };
-    case constants.SESSION_GET_ALL_SUCCESS:
-      return {
-        ...state,
-        sessions: {
-          loading: false,
-          data: action.payload,
-        },
-      };
-    case constants.SESSION_GET_ALL_ERROR:
-      return {
-        ...state,
-        sessions: {
-          loading: false,
-          loadingError: action.payload,
-        },
-      };
+    case constants.SESSION_GET_ALL: {
+      newState.sessions.loading = true;
+      break;
+    }
+    case constants.SESSION_GET_ALL_SUCCESS: {
+      newState.sessions.loading = false;
+      newState.sessions.data = action.payload;
+      break;
+    }
+    case constants.SESSION_GET_ALL_ERROR: {
+      newState.sessions.loading = false;
+      newState.sessions.loadingError = action.payload;
+      break;
+    }
     case constants.SESSION_CREATE: {
-      return {
-        ...state,
-        sessions: {
-          ...state.sessions,
-          creating: true,
-          createdSession: null,
-        },
-      };
+      newState.sessions.creating = true;
+      newState.sessions.createdSession = null;
+      break;
     }
     case constants.SESSION_CREATE_SUCCESS: {
-      const data = state.sessions.data || [];
+      const data = newState.sessions.data || [];
       if (data.indexOf(action.payload === -1)) {
         data.push(action.payload);
       }
-      return {
-        ...state,
-        sessions: {
-          ...state.sessions,
-          creating: false,
-          createdSession: action.payload,
-          data,
-        },
-      };
+      newState.sessions.creating = false;
+      newState.sessions.createdSession = action.payload;
+      newState.sessions.data = data;
+      break;
     }
     case constants.SESSION_CREATE_ERROR: {
-      return {
-        ...state,
-        sessions: {
-          ...state.sessions,
-          createdSession: null,
-          creating: false,
-          creatingError: action.payload,
-        },
-      };
+      newState.sessions.createdSession = null;
+      newState.sessions.creating = false;
+      newState.sessions.creatingError = action.payload;
+      break;
     }
     case constants.CHAT_CREATE: {
-      return {
-        ...state,
-        chat: {
-          token: action.payload.token,
-        },
+      newState.chat = {
+        token: action.payload.token,
       };
+      break;
     }
     case constants.USER_CREATE: {
-      return {
-        ...state,
-        chat: {
-          ...state.chat,
-          creatingUser: true,
-        },
-      };
+      newState.chat.creatingUser = true;
+      break;
     }
     case constants.USER_CREATE_SUCCESS: {
-      return {
-        ...state,
-        chat: {
-          ...state.chat,
-          user: action.payload.user,
-          creatingUser: false,
-        },
-      };
+      newState.chat.user = action.payload.user;
+      newState.chat.creatingUser = false;
+      break;
     }
     case constants.USER_CREATE_ERROR: {
-      return {
-        ...state,
-        chat: {
-          ...state.chat,
-          creatingUserError: action.payload.error,
-          creatingUser: false,
-        },
-      };
+      newState.chat.creatingUserError = action.payload.error;
+      newState.chat.creatingUser = false;
+      break;
     }
     case constants.USER_CREATE_RESET: {
-      return {
-        ...state,
-        chat: {
-          ...state.chat,
-          creatingUserError: null,
-          creatingUser: false,
-        },
-      };
+      newState.chat.creatingUserError = null;
+      newState.chat.creatingUser = false;
+      break;
     }
     case constants.MESSAGE_SEND_SUCCESS: {
-      const messages = state.chat.messages || [];
-      messages.push(action.payload.data);
-      return {
-        ...state,
-        chat: {
-          ...state.chat,
-          messages,
-        },
-      };
+      if (newState.chat) {
+        const messages = newState.chat.messages || [];
+        messages.push(action.payload.data);
+        newState.chat.messages = messages;
+      }
+      break;
     }
     default:
-      return state;
+      break;
   }
+  return newState;
 }

@@ -34,15 +34,4 @@ describe('ChatSession', () => {
       done();
     }, 100);
   });
-
-  it('should fire session created event', (done) => {
-    let sessionToken;
-    chatSessions.addOnSessionCreatedEventListener((token) => {
-      setTimeout(() => {
-        expect(token).toBe(sessionToken);
-        done();
-      }, 200);
-    });
-    sessionToken = chatSessions.createSession();
-  });
 });

@@ -17,8 +17,8 @@ function* receiveSocketMessageAsync(action) {
       break;
     }
     case wsServerMessages.WS_SERVER_CHAT_USER_ADDED: {
-      const chat = yield select((state) => { return state.chat.chat; });
-      if (typeof chat.user === 'undefined') {
+      const chat = yield select((state) => { return state.chat; });
+      if (chat.chat && !chat.chat.user) {
         yield put(actions.createUserSuccess({
           user: action.payload.data.user,
         }));
